@@ -7,77 +7,89 @@
 
 import UIKit
 
-class GFItemSuperClassVC: UIViewController {
 
-    let stackView       = UIStackView()
-    let itemViewOne     = GFChildItemView()
-    let itemViewTwo     = GFChildItemView()
-    let actionButton    = GFButton()
+class GFBodyUserInforProperties {
+    var delegate                  : UserInforVCDelegate!
+    var user                      : User!
+    fileprivate var stackView     : UIStackView      = UIStackView()
+    fileprivate var itemViewOne   : GFChildItemView  = GFChildItemView()
+    fileprivate var itemViewTwo   : GFChildItemView  = GFChildItemView()
+    fileprivate var actionButton  : GFButton         = GFButton()
+}
+
+
+protocol GFBodyUserInforProtocol {
     
-    var user            : User!
-    weak var delegate   : UserInforVCDelegate!
+    var bodyUserInforProps : GFBodyUserInforProperties { get }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.addSubViews(views: stackView, actionButton)
+    init(user: User)
+    
+    func configureViewController()
+    func configureStackView()
+    func configureActionButton()
+    
+    func loadDataToUI(where currentVC: UIViewController)
+    func addActionToUI()
+}
+
+extension GFBodyUserInforProtocol where Self: UIViewController {
+
+    //MARK: - LoadDataToUI
+    func loadDataToUI(where currentVC: UIViewController) {
         
-        configureViewController()
-        addViewsToStackView()
-        configureUILayouts()
-        configureActionButton()
-    }
-    
-    //MARK: Initializer
-    init(user: User!) {
-        super.init(nibName: nil, bundle: nil)
-        self.user = user
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        switch currentVC {
+        case is GFItemFollowersVC:
+            bodyUserInforProps.actionButton.set(backgroundColor: .systemGreen, title: "Get Followers")
+            bodyUserInforProps.itemViewOne.setType(type: .followers, with: bodyUserInforProps.user.followers)
+            bodyUserInforProps.itemViewTwo.setType(type: .following, with: bodyUserInforProps.user.following)
+            
+        case is GFItemProfileVC:
+            bodyUserInforProps.actionButton.set(backgroundColor: .systemPink, title: "Get Profile")
+            bodyUserInforProps.itemViewOne.setType(type: .gists, with: bodyUserInforProps.user.publicGists)
+            bodyUserInforProps.itemViewTwo.setType(type: .repos, with: bodyUserInforProps.user.publicRepos)
+            
+        default:
+            return
+        }
     }
     
     
     //MARK: - Configure VC
-    private func configureViewController() {
-        view.backgroundColor    = .systemFill
-        view.layer.cornerRadius = 18
+    func configureViewController() {
+        view.addSubViews(views: bodyUserInforProps.stackView, bodyUserInforProps.actionButton)
         
+        view.backgroundColor    = .secondarySystemBackground
+        view.layer.cornerRadius = 16
     }
     
-    
-    //MARK: - add subViews to stackView
-    private func addViewsToStackView() {
-        stackView.addArrangedSubViews(views: [itemViewOne, itemViewTwo])
-        stackView.distribution  = .equalSpacing
-        stackView.axis          = .horizontal
-    }
-    
-    //MARK: - configure UILayouts
-    
-    private func configureUILayouts() {
-        stackView.translatesAutoresizingMaskIntoConstraints     = false
+    func configureStackView() {
+        bodyUserInforProps.stackView.addArrangedSubViews(views:bodyUserInforProps.itemViewOne, bodyUserInforProps.itemViewTwo)
+        bodyUserInforProps.stackView.distribution   = .equalSpacing
+        bodyUserInforProps.stackView.axis           = .horizontal
         
-        let padding: CGFloat                                    = 20.0
+        bodyUserInforProps.stackView.translatesAutoresizingMaskIntoConstraints = false
+        let padding : CGFloat = 20.0
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            stackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
-            
-            actionButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
-            actionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            actionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            actionButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
+            bodyUserInforProps.stackView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: padding),
+            bodyUserInforProps.stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: padding),
+            bodyUserInforProps.stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -padding),
+            bodyUserInforProps.stackView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.33),
         ])
     }
     
-    //MARK: Configure Action Button
-    func configureActionButton() {
-        actionButton.addTarget(self, action: #selector(didTappedActionButton), for: .touchUpInside)
-    }
     
-    @objc func didTappedActionButton() { return }
-
+    func configureActionButton() {
+        bodyUserInforProps.actionButton.translatesAutoresizingMaskIntoConstraints = false
+        let padding : CGFloat = 20.0
+        
+        NSLayoutConstraint.activate([
+            bodyUserInforProps.actionButton.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.3),
+            bodyUserInforProps.actionButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: padding),
+            bodyUserInforProps.actionButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -padding),
+            bodyUserInforProps.actionButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -padding),
+        ])
+    }
 }
+
+

@@ -7,6 +7,14 @@
 
 import UIKit
 
+
+
+
+
+
+
+
+
 class GFCustomAlertVC: UIViewController {
     
     //MARK: - Global Variables

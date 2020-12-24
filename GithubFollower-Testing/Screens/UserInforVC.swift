@@ -8,7 +8,7 @@
 import UIKit
 
 protocol UserInforVCDelegate: class {
-    func itemInforVC(_ itemInforVC: GFItemSuperClassVC, showSafariForProfile user: User)
+    func itemInforVC(_ itemInforVC: UIViewController, showSafariForProfile user: User)
     func itemInforVC(showFollowersOf user: User)
 }
 
@@ -98,12 +98,12 @@ class UserInforVC: UIViewController {
     func configureUIElements(user: User) {
         self.add(childVC: GFHeaderUserInforVC(user: user), into: self.headerView)
         
-        let profileItemVC           = GFItemProfileVC(user: user)
-        profileItemVC.delegate      = self
+        let profileItemVC                              = GFItemProfileVC(user: user)
+        profileItemVC.bodyUserInforProps.delegate      = self
         self.add(childVC: profileItemVC, into: self.itemContainerViewOne)
         
-        let followersItemVC         = GFItemFollowersVC(user: user)
-        followersItemVC.delegate    = self
+        let followersItemVC                            = GFItemFollowersVC(user: user)
+        followersItemVC.bodyUserInforProps.delegate    = self
         self.add(childVC: followersItemVC, into: self.itemContainerViewTwo)
     }
     
@@ -154,7 +154,7 @@ class UserInforVC: UIViewController {
 extension UserInforVC: UserInforVCDelegate {
 
     // Show Profile's Safari
-    func itemInforVC(_ itemInforVC: GFItemSuperClassVC, showSafariForProfile user: User) {
+    func itemInforVC(_ itemInforVC: UIViewController, showSafariForProfile user: User) {
         guard let url = URL(string: user.htmlUrl) else {
             self.presentGFAlertOnMainThread(alertTitle: "Invalid URL",
                                             body: "There was something wrong with the URL. Please try again 😢",

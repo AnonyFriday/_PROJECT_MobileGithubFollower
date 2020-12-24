@@ -13,6 +13,7 @@ protocol FollowersListVCDelegate: class {
 
 class FollowersListVC: UIViewController, GFLoadable {
     
+    //MARK: - Protocol Endpoint
     var loadableProperties: GFLoadableProperties = GFLoadableProperties()
     
     //MARK: - Global Variables

@@ -1,9 +1,4 @@
-//
-//  GFDataLoadingVC.swift
-//  GithubFollower-Testing
-//
-//  Created by Vu Kim Duy on 23/11/20.
-//
+
 
 import UIKit
 
