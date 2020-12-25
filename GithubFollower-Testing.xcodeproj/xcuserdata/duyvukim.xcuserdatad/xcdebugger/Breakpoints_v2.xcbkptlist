@@ -3,4 +3,22 @@
    uuid = "98628365-FEAF-45BF-ACE7-F3187AAADE12"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "207E45F5-5D16-4F02-BE04-F7E7353E715C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../var/folders/d1/ptqpwt5x3959xwttt66_jlxr0000gn/T/xcode/scm/GithubFollower-Testing/a8eec081cfb0950cc9b7d639870a61ca7146e83b/GithubFollower-Testing/Custom Views/View Controllers/User Info/User Info/GFItemSuperClassVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "configureUILayouts()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
