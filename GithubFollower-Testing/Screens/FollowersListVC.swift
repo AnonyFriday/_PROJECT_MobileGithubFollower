@@ -7,9 +7,7 @@
 
 import UIKit
 
-protocol FollowersListVCDelegate: class {
-    func userInforVC(_ userInforVC: UIViewController, didReceivedUsername username: String)
-}
+
 
 class FollowersListVC: UIViewController, GFLoadable {
     
@@ -260,18 +258,17 @@ extension FollowersListVC: UISearchResultsUpdating {
 }
 
 //MARK: -- FollowersListVCDelegate
-extension FollowersListVC: FollowersListVCDelegate {
+extension FollowersListVC: UserInforVCDelegate {
     func userInforVC(_ userInforVC: UIViewController, didReceivedUsername username: String) {
-        
+    
         followers.removeAll()
         filteredFollowers.removeAll()
         hasMoreFollowers                = true
         currentPage                     = 1
-        self.title                      = username
+        title                           = username
         self.username                   = username
         
         getFollowers(username: username, currentPage: currentPage)
         collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
-        
     }
 }

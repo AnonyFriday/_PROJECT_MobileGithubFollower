@@ -33,13 +33,7 @@ class SearchVC: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
-    
-    
-    // MARK: - Dismiss Keyboard
-    // First Solution
-    //        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    //            view.endEditing(true)
-    //    }
+
     
     // Second Solution
     func dismissKeyboard(){
@@ -49,7 +43,6 @@ class SearchVC: UIViewController {
     
     
     // MARK: Push FollowersListVC
-    // Pass data to the Followers List VC
     @objc func pushFollowersListVC () {
         guard !isUsernameEmpty else {
             presentGFAlertOnMainThread(alertTitle: "Empty Username",

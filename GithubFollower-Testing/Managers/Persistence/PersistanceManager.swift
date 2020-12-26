@@ -41,6 +41,7 @@ enum PersistanceManager {
         }
     }
     
+    
     //MARK: Save the decoded favorites into the local store
     static private func save(favorites: [Favorite]) -> GFError? {
         do {
@@ -52,6 +53,7 @@ enum PersistanceManager {
             return .unableSaveFavorite
         }
     }
+    
     
     //MARK: Retrieving the favoritess based on the given key
     static func retrieveFavorites( completed: @escaping (Result<[Favorite], GFError>) -> Void) {

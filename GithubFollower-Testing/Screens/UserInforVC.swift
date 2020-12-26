@@ -7,9 +7,8 @@
 
 import UIKit
 
-protocol UserInforVCDelegate: class {
-    func itemInforVC(_ itemInforVC: UIViewController, showSafariForProfile user: User)
-    func itemInforVC(showFollowersOf user: User)
+protocol UserInforVCDelegate: AnyObject {
+    func userInforVC(_ userInforVC: UIViewController, didReceivedUsername username: String)
 }
 
 class UserInforVC: UIViewController {
@@ -22,12 +21,18 @@ class UserInforVC: UIViewController {
     private var itemContainerViewTwo : UIView       = UIView()
     private var dateLabel            : GFBodyLabel  = GFBodyLabel(textAlignment: .center)
     
-    weak var delegate                : FollowersListVCDelegate!
+    private var scrollView           : UIScrollView!
+    private var contentView          : UIView!
     
+    weak var delegate                : UserInforVCDelegate!
+    
+    
+    //MARK: Init
     init(username: String) {
         super.init(nibName: nil, bundle: nil)
         self.username = username
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("Required Initialization")
@@ -39,9 +44,11 @@ class UserInforVC: UIViewController {
         super.viewDidLoad()
         
         configureViewController()
+        configureScrollView()
         configureContainerView()
         getUserInfor()
     }
+    
     
     //MARK: - configure View Controller
     private func configureViewController() {
@@ -98,13 +105,15 @@ class UserInforVC: UIViewController {
     func configureUIElements(user: User) {
         self.add(childVC: GFHeaderUserInforVC(user: user), into: self.headerView)
         
-        let profileItemVC                              = GFItemProfileVC(user: user)
-        profileItemVC.bodyUserInforProps.delegate      = self
+        let profileItemVC                              = GFBodyProfileUserInforVC(user: user)
+        profileItemVC.delegate                         = self
         self.add(childVC: profileItemVC, into: self.itemContainerViewOne)
         
-        let followersItemVC                            = GFItemFollowersVC(user: user)
-        followersItemVC.bodyUserInforProps.delegate    = self
+        let followersItemVC                            = GFBodyFollowersUserInforVC(user: user)
+        followersItemVC.delegate                       = self
         self.add(childVC: followersItemVC, into: self.itemContainerViewTwo)
+        
+        dateLabel.text                                 = user.createdAt.convertToMonthYearString()
     }
     
 
@@ -118,56 +127,84 @@ class UserInforVC: UIViewController {
     }
     
     
+    //MARK: - Configure Scroll View
+    func configureScrollView() {
+        scrollView = UIScrollView()
+        self.view.addSubview(scrollView)
+        
+        let configureDevice = DeviceTypes.iPhoneSEGen2_Standard || DeviceTypes.iPhoneSEGen2_Zoomed || DeviceTypes.iPhone8_Zoomed
+        scrollView.showsVerticalScrollIndicator = configureDevice
+        scrollView.isScrollEnabled = configureDevice
+        
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+        
+        contentView = UIView()
+        scrollView.addSubview(contentView)
+        
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.heightAnchor.constraint(equalToConstant: 700),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+        ])
+    }
+    
+    
+    
     //MARK: - Configure Header View
     func configureContainerView() {
         let padding : CGFloat                    = 20
         let arrayOfContainerViews: Array<UIView> = [headerView, itemContainerViewOne, itemContainerViewTwo, dateLabel]
         
         // Universal Configuration
-        self.view.addSubViews(views: headerView, itemContainerViewOne, itemContainerViewTwo, dateLabel)
+        self.contentView.addSubViews(views: headerView, itemContainerViewOne, itemContainerViewTwo, dateLabel)
         arrayOfContainerViews.forEach { view in
             view.translatesAutoresizingMaskIntoConstraints = false
             
             NSLayoutConstraint.activate([
-                view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: padding),
-                view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -padding),
+                view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+                view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
             ])
         }
         
+        
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
-            headerView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.3),
+            headerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
+            headerView.heightAnchor.constraint(equalToConstant: 180),
             
-            itemContainerViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 8),
-            itemContainerViewOne.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.27),
+            itemContainerViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 22),
+            itemContainerViewOne.heightAnchor.constraint(equalToConstant: 180),
             
-            itemContainerViewTwo.topAnchor.constraint(equalTo: itemContainerViewOne.bottomAnchor, constant: 16),
-            itemContainerViewTwo.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.27),
+            itemContainerViewTwo.topAnchor.constraint(equalTo: itemContainerViewOne.bottomAnchor, constant: 22),
+            itemContainerViewTwo.heightAnchor.constraint(equalToConstant: 180),
             
-            dateLabel.topAnchor.constraint(equalTo: itemContainerViewTwo.bottomAnchor, constant: 4),
-            dateLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
+            dateLabel.topAnchor.constraint(equalTo: itemContainerViewTwo.bottomAnchor, constant: 16),
         ])
     }
 }
 
 //MARK: Extension
-extension UserInforVC: UserInforVCDelegate {
-
-    // Show Profile's Safari
-    func itemInforVC(_ itemInforVC: UIViewController, showSafariForProfile user: User) {
-        guard let url = URL(string: user.htmlUrl) else {
-            self.presentGFAlertOnMainThread(alertTitle: "Invalid URL",
-                                            body: "There was something wrong with the URL. Please try again 😢",
-                                            buttonTitle: "OK")
-            return
-        }
-        
-        self.openSafariWebBrowser(url: url)
-    }
+extension UserInforVC: GFBodyProfileUserInforVCDelegate {
     
-    // Show the followers Collection View
-    // Dismiss the current VC
-    func itemInforVC(showFollowersOf user: User) {
+    func profileUserInforVC(_ profileUserInforVC: GFBodyProfileUserInforVC, willGetProfileOf user: User) {
+        guard let urlProfile = URL(string: user.htmlUrl) else { return }
+        self.openSafariWebBrowser(url: urlProfile)
+    }
+}
+
+extension UserInforVC: GFBodyFollowersUserInforVCDelegate {
+    
+    func followersUserInforVC(_ followersUserInforVC: GFBodyFollowersUserInforVC, willGetFollowersOf user: User) {
         delegate.userInforVC(self, didReceivedUsername: user.login)
+        dismissViewControler()
     }
 }

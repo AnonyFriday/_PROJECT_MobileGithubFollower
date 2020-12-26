@@ -8,16 +8,19 @@
 import UIKit
 
 
+//MARK: Properties
 class GFBodyUserInforProperties {
+    
     var delegate                  : UserInforVCDelegate!
     var user                      : User!
+    var actionButton              : GFButton         = GFButton()
     fileprivate var stackView     : UIStackView      = UIStackView()
     fileprivate var itemViewOne   : GFChildItemView  = GFChildItemView()
     fileprivate var itemViewTwo   : GFChildItemView  = GFChildItemView()
-    fileprivate var actionButton  : GFButton         = GFButton()
 }
 
 
+//MARK: Body User Infor Protocol
 protocol GFBodyUserInforProtocol {
     
     var bodyUserInforProps : GFBodyUserInforProperties { get }
@@ -32,18 +35,20 @@ protocol GFBodyUserInforProtocol {
     func addActionToUI()
 }
 
+
+//MARK: Extension
 extension GFBodyUserInforProtocol where Self: UIViewController {
 
     //MARK: - LoadDataToUI
     func loadDataToUI(where currentVC: UIViewController) {
         
         switch currentVC {
-        case is GFItemFollowersVC:
+        case is GFBodyFollowersUserInforVC:
             bodyUserInforProps.actionButton.set(backgroundColor: .systemGreen, title: "Get Followers")
             bodyUserInforProps.itemViewOne.setType(type: .followers, with: bodyUserInforProps.user.followers)
             bodyUserInforProps.itemViewTwo.setType(type: .following, with: bodyUserInforProps.user.following)
             
-        case is GFItemProfileVC:
+        case is GFBodyProfileUserInforVC:
             bodyUserInforProps.actionButton.set(backgroundColor: .systemPink, title: "Get Profile")
             bodyUserInforProps.itemViewOne.setType(type: .gists, with: bodyUserInforProps.user.publicGists)
             bodyUserInforProps.itemViewTwo.setType(type: .repos, with: bodyUserInforProps.user.publicRepos)

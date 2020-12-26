@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "207E45F5-5D16-4F02-BE04-F7E7353E715C"
-            shouldBeEnabled = "Yes"
+            uuid = "923A5ED5-2106-4484-B04B-79BD5F823FC1"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../../../../var/folders/d1/ptqpwt5x3959xwttt66_jlxr0000gn/T/xcode/scm/GithubFollower-Testing/a8eec081cfb0950cc9b7d639870a61ca7146e83b/GithubFollower-Testing/Custom Views/View Controllers/User Info/User Info/GFItemSuperClassVC.swift"
+            filePath = "GithubFollower-Testing/Managers/Networking/NetworkManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "configureUILayouts()"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "requestStaticAvatarImage(endpoint:completed:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

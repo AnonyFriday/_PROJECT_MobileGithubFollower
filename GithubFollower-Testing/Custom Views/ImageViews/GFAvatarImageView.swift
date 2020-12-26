@@ -24,8 +24,10 @@ class GFAvatarImageView: UIImageView {
     func setAvatarImage(avatarUrl: String) {
         NetworkManager.shared.fetchingAvatarFollowers(avatarUrl: avatarUrl) { [weak self] (imageData) in
             guard let self = self else { return }
-            self.image = imageData
-            return
+            
+            DispatchQueue.main.async {
+                self.image = imageData
+            }
         }
     }
     

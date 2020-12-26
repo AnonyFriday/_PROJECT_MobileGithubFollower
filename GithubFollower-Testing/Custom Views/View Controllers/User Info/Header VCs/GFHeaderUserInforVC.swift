@@ -16,6 +16,7 @@ class GFHeaderUserInforVC: UIViewController {
     var locationImageView   = UIImageView()
     var locationLabel       = GFSecondaryLabel(fontSize: 18)
     var bioLabel            = GFBodyLabel(textAlignment: .left)
+    
     private var user : User!
     
     init(user: User) {
@@ -31,14 +32,9 @@ class GFHeaderUserInforVC: UIViewController {
         super.viewDidLoad()
         self.view.addSubViews(views: avatarImageView, usernameLabel, nameImageView, nameLabel,locationLabel,locationImageView,bioLabel)
         
-        configureViewController()
         configureUIElements()
     }
     
-    //MARK: - Configure View Controller
-    private func configureViewController() {
-        
-    }
     
     //MARK: - Configure UILayouts, Constants
     private func configureUIElements() {
