@@ -1,18 +1,15 @@
 
+
 import UIKit
 
-/// Singleton Design Pattern
 class NetworkManager {
-    static var shared           = NetworkManager()
-    private let baseUrl         = "https://api.github.com/users/"
-    private var imageCache      = NSCache<NSString, UIImage>()
-    
-    private init() { return }
+    static let shared = NetworkManager()
+    private init() {}
     
     
-    // MARK: Get Followers
-    func downloadFollowers(username: String, page: Int, completed: @escaping (Result<[Follower], GFError>) -> Void) {
-        requestDynamicData(.getFollowers(from: username, page: page), modelType: [Follower].self) { (result) in
+    func getFollowers(username: String, page: Int, completed: @escaping (Result<[Follower],GFError>) -> Void) {
+        requestDynamicUrl(endpoint: .getFollowers(username: username, page: page), modelType: [Follower].self) { (result) in
+            
             switch result {
             case .success(let followers):
                 completed(.success(followers))
@@ -23,17 +20,9 @@ class NetworkManager {
     }
     
     
-    // MARK: Fetching Avatar Followers
-    func fetchingAvatarFollowers(avatarUrl: String, completed: @escaping (UIImage?) -> Void) -> Void {
-        requestStaticAvatarImage(endpoint: .getImage(from: avatarUrl)) { (image) in
-            completed(image)
-        }
-    }
-    
-    
-    // MARK: Download User
-    func downloadUser(username: String, completed: @escaping (Result<User, GFError>) -> Void) {
-        requestDynamicData(.getUser(from: username), modelType: User.self) { (result) in
+    func getUser(username: String, completed: @escaping (Result<User,GFError>) -> Void) {
+        requestDynamicUrl(endpoint: .getUser(username: username), modelType: User.self) { (result) in
+            
             switch result {
             case .success(let user):
                 completed(.success(user))
@@ -44,123 +33,83 @@ class NetworkManager {
     }
     
     
+    func getAvatarImage(avatarUrl: String, completed: @escaping (UIImage?) -> Void) {
+        requestStaticAvatarUrl(endpoint: .getAvatarImage(avatarUrl: avatarUrl)) { (image) in
+            completed(image)
+        }
+    }
     
-    
-    
-    /*********************************************************Private Section*******************************************************************************/
-    //MARK: - Request Dynamic Data
-    fileprivate func requestDynamicData<T: Codable>(_ endpoint: EndpointManager,
-                                        modelType: T.Type,
-                                        completed: @escaping (Result<T,GFError>) -> Void) {
-        guard let url = endpoint.url else {
+}
+
+
+extension NetworkManager {
+    fileprivate func requestDynamicUrl<T: Codable>(endpoint: EndpointManager,
+                                                modelType: T.Type,
+                                                completed: @escaping(Result<T,GFError>) -> Void) {
+        guard let url = endpoint.urlGithub else {
             completed(.failure(.invalidUsername))
             return
         }
         
+    
+        
         URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
             guard error == nil else {
-                
-                completed(.failure(.invalidData))
+                completed(.failure(.invalidUsername))
                 return
             }
             
+            
             guard let response        = response as? HTTPURLResponse,
-                response.statusCode == 200
+                  response.statusCode == 200
             else {
                 completed(.failure(.invalidResponse))
                 return
             }
             
-            guard let data = data else {
+            
+            guard let data            = data else {
                 completed(.failure(.invalidData))
                 return
             }
             
+            
             do {
-                let decoder                     = JSONDecoder()
-                decoder.keyDecodingStrategy     = .convertFromSnakeCase
-                decoder.dateDecodingStrategy    = .iso8601
-                let data                        = try decoder.decode(T.self, from: data)
-                
-                completed(.success(data))
-        
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                decoder.keyDecodingStrategy  = .convertFromSnakeCase
+                let decodedData              = try decoder.decode(T.self, from: data)
+                completed(.success(decodedData))
             } catch {
                 completed(.failure(.invalidData))
             }
-        }.resume()
+        }
+        
     }
     
-    
-    //MARK: Request Static Data
-    func requestStaticAvatarImage<T: UIImage>(endpoint: EndpointManager,
-                                         completed: @escaping (T?) -> Void) {
-        
-        guard let staticUrl = endpoint.staticUrl else {
+    fileprivate func requestStaticAvatarUrl(endpoint: EndpointManager, completed: @escaping(UIImage?) -> Void) {
+        guard let url = endpoint.urlAvatarImage else {
             completed(nil)
             return
         }
         
-        let keyCache = NSString(string: staticUrl.absoluteString)
-        
-        if let image = CacheManager.getImageFromKey(keyCache) {
-            completed(image as? T)
-        } else {
-            URLSession.shared.dataTask(with: staticUrl) { (data, response, error) in
-                guard error == nil,
-                      let response = response as? HTTPURLResponse,
-                      response.statusCode   == 200,
-                      let data = data
-                else {
-                    completed(nil)
-                    return
-                }
-                
-                guard let image = UIImage(data: data) else {
-                    completed(nil)
-                    return
-                }
-                
-                completed(image as? T)
-            }.resume()
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard error == nil,
+                  let response = response as? HTTPURLResponse,
+                  response.statusCode == 200,
+                  let data = data
+            else {
+                completed(nil)
+                return
+            }
+            
+            guard let image = UIImage(data: data) else {
+                completed(nil)
+                return
+            }
+            
+            completed(image)
         }
-           
-        
-        
-        
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

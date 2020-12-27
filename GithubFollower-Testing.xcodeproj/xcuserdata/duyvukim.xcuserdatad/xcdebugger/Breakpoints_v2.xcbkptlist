@@ -14,10 +14,8 @@
             filePath = "GithubFollower-Testing/Managers/Networking/NetworkManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "requestStaticAvatarImage(endpoint:completed:)"
-            landmarkType = "7">
+            startingLineNumber = "116"
+            endingLineNumber = "116">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -22,13 +22,13 @@ class GFAvatarImageView: UIImageView {
     /// setImage
     /// - Parameter avatarUrl: avatarUrl
     func setAvatarImage(avatarUrl: String) {
-        NetworkManager.shared.fetchingAvatarFollowers(avatarUrl: avatarUrl) { [weak self] (imageData) in
-            guard let self = self else { return }
-            
-            DispatchQueue.main.async {
-                self.image = imageData
-            }
-        }
+//        NetworkManager.shared.fetchingAvatarFollowers(avatarUrl: avatarUrl) { [weak self] (imageData) in
+//            guard let self = self else { return }
+//            
+//            DispatchQueue.main.async {
+//                self.image = imageData
+//            }
+//        }
     }
     
     private func configure() {

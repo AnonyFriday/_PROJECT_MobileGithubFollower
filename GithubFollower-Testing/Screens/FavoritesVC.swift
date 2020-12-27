@@ -53,24 +53,24 @@ class FavoritesVC: UIViewController, GFLoadable {
     }
     //MARK: Get Favorites
     private func getFavorites() {
-        PersistanceManager.retrieveFavorites { [weak self] (result) in
-            guard let self = self else { return }
-            switch result {
-            case .success( let favorites):
-                if favorites.isEmpty {
-                    self.showEmptyState(message: "No Favorites", in: self.view)
-                } else {
-                    self.favorites = favorites
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                        self.view.bringSubviewToFront(self.tableView)
-                    }
-                }
-            
-            case .failure(let error):
-                self.presentGFAlertOnMainThread(alertTitle: "Something went wrong", body: error.rawValue, buttonTitle: "Ok")
-            }
-        }
+//        PersistanceManager.retrieveFavorites { [weak self] (result) in
+//            guard let self = self else { return }
+//            switch result {
+//            case .success( let favorites):
+//                if favorites.isEmpty {
+//                    self.showEmptyState(message: "No Favorites", in: self.view)
+//                } else {
+//                    self.favorites = favorites
+//                    DispatchQueue.main.async {
+//                        self.tableView.reloadData()
+//                        self.view.bringSubviewToFront(self.tableView)
+//                    }
+//                }
+//
+//            case .failure(let error):
+//                self.presentGFAlertOnMainThread(alertTitle: "Something went wrong", body: error.rawValue, buttonTitle: "Ok")
+//            }
+//        }
     }
    
 }
@@ -91,15 +91,15 @@ extension FavoritesVC: UITableViewDelegate {
         favorites.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         
-        PersistanceManager.updatingWith(favorite: favorite, categoryType: .remove) { [weak self](error) in
-            guard let self = self else { return }
-            guard let error = error else {
-                self.presentGFAlertOnMainThread(alertTitle: "Removed Successfully", body: "\(favorite.login) has been defavorited.😢 ", buttonTitle: "Ok")
-                return
-            }
-            
-            self.presentGFAlertOnMainThread(alertTitle: "Something went wrong", body: error.rawValue, buttonTitle: "Ok")
-        }
+//        PersistanceManager.updatingWith(favorite: favorite, categoryType: .remove) { [weak self](error) in
+//            guard let self = self else { return }
+//            guard let error = error else {
+//                self.presentGFAlertOnMainThread(alertTitle: "Removed Successfully", body: "\(favorite.login) has been defavorited.😢 ", buttonTitle: "Ok")
+//                return
+//            }
+//            
+//            self.presentGFAlertOnMainThread(alertTitle: "Something went wrong", body: error.rawValue, buttonTitle: "Ok")
+//        }
         
     }
 }
