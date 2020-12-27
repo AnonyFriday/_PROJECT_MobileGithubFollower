@@ -33,6 +33,7 @@
 		5C7B4F912595E48300322BA1 /* GFBodyProfileUserInforVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B4F902595E48300322BA1 /* GFBodyProfileUserInforVCDelegate.swift */; };
 		5C7B4FA925975E9C00322BA1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B4FA825975E9C00322BA1 /* NetworkManager.swift */; };
 		5C7B4FAC2597619C00322BA1 /* EndpointManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B4FAB2597619C00322BA1 /* EndpointManager.swift */; };
+		5C7B4FB32598B53C00322BA1 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B4FB22598B53C00322BA1 /* PersistenceManager.swift */; };
 		5C8A72C02547BE8D0076AF43 /* UserInforVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A72BF2547BE8D0076AF43 /* UserInforVC.swift */; };
 		5C8AA798258F5D95005C35B0 /* UITabbarController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8AA797258F5D95005C35B0 /* UITabbarController+Ext.swift */; };
 		5C8C2711256CE0DD006F2E18 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C2710256CE0DD006F2E18 /* UIStackView+Ext.swift */; };
@@ -81,6 +82,7 @@
 		5C7B4F902595E48300322BA1 /* GFBodyProfileUserInforVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBodyProfileUserInforVCDelegate.swift; sourceTree = "<group>"; };
 		5C7B4FA825975E9C00322BA1 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5C7B4FAB2597619C00322BA1 /* EndpointManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointManager.swift; sourceTree = "<group>"; };
+		5C7B4FB22598B53C00322BA1 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		5C8A72BF2547BE8D0076AF43 /* UserInforVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInforVC.swift; sourceTree = "<group>"; };
 		5C8AA797258F5D95005C35B0 /* UITabbarController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabbarController+Ext.swift"; sourceTree = "<group>"; };
 		5C8C2710256CE0DD006F2E18 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 		5C7B4F9F2596AC9F00322BA1 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				5C7B4FB22598B53C00322BA1 /* PersistenceManager.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				5C4FEE51254B978D00483551 /* GFBodyUserInforProtocol.swift in Sources */,
 				5C70F867259329BE00B1D28E /* GFLoadable.swift in Sources */,
 				5CD02AF225578D70004628FA /* Favorite.swift in Sources */,
+				5C7B4FB32598B53C00322BA1 /* PersistenceManager.swift in Sources */,
 				5C7B4F8C2595E40E00322BA1 /* GFBodyFollowersUserInforVCDelegate.swift in Sources */,
 				5C7B4FA925975E9C00322BA1 /* NetworkManager.swift in Sources */,
 				5C4FEE69254BE74E00483551 /* Date+Ext.swift in Sources */,

@@ -14,8 +14,264 @@
             filePath = "GithubFollower-Testing/Managers/Networking/NetworkManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116">
+            startingLineNumber = "117"
+            endingLineNumber = "117">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3AD2E17F-2DB6-4BAF-A9ED-8B5E919DF0B3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GithubFollower-Testing/Screens/FollowersListVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "addUserToFavorites()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3AD2E17F-2DB6-4BAF-A9ED-8B5E919DF0B3 - e40244133da94cef"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GithubFollower_Testing.FollowersListVC.(addUserToFavorites in _6BD8F6CCB0682725DE0AF0FD57B7C61A)() -&gt; ()"
+                  moduleName = "GithubFollower-Testing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/duyvukim/Desktop/Takehome%20Project/GithubFollower-Testing/GithubFollower-Testing/Screens/FollowersListVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "87">
+               </Location>
+               <Location
+                  uuid = "3AD2E17F-2DB6-4BAF-A9ED-8B5E919DF0B3 - 6f49d0454f9de97a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;GithubFollower_Testing.User, GithubFollower_Testing.GFError&gt;) -&gt; () in GithubFollower_Testing.FollowersListVC.(addUserToFavorites in _6BD8F6CCB0682725DE0AF0FD57B7C61A)() -&gt; ()"
+                  moduleName = "GithubFollower-Testing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/duyvukim/Desktop/Takehome%20Project/GithubFollower-Testing/GithubFollower-Testing/Screens/FollowersListVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "198">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F2C62E3A-CE7A-4C0F-B974-19213D393988"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GithubFollower-Testing/Screens/FollowersListVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "getFollowers(username:currentPage:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7233B70B-319B-4D61-8ADE-577F0DE1798D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GithubFollower-Testing/Managers/Networking/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "requestDynamicUrl(endpoint:modelType:completed:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3199B9C3-CC8B-4535-BCFA-A94304EC6845"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GithubFollower-Testing/Managers/Networking/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "requestDynamicUrl(endpoint:modelType:completed:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3199B9C3-CC8B-4535-BCFA-A94304EC6845 - 6d62afdb5a3fc73d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GithubFollower_Testing.NetworkManager.(requestDynamicUrl in _E9D9CE3DB4FD741A5D04CD19EB33A986)&lt;A where A: Swift.Decodable, A: Swift.Encodable&gt;(endpoint: GithubFollower_Testing.EndpointManager, modelType: A.Type, completed: (Swift.Result&lt;A, GithubFollower_Testing.GFError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "GithubFollower-Testing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/duyvukim/Desktop/Takehome%20Project/GithubFollower-Testing/GithubFollower-Testing/Managers/Networking/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "897">
+               </Location>
+               <Location
+                  uuid = "3199B9C3-CC8B-4535-BCFA-A94304EC6845 - 59a3ad7080c487c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GithubFollower_Testing.NetworkManager.(requestDynamicUrl in _E9D9CE3DB4FD741A5D04CD19EB33A986)&lt;A where A: Swift.Decodable, A: Swift.Encodable&gt;(endpoint: GithubFollower_Testing.EndpointManager, modelType: A.Type, completed: (Swift.Result&lt;A, GithubFollower_Testing.GFError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "GithubFollower-Testing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/duyvukim/Desktop/Takehome%20Project/GithubFollower-Testing/GithubFollower-Testing/Managers/Networking/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "497">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "70137402-1A8D-4394-9283-44B797E39821"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GithubFollower-Testing/Screens/FollowersListVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "getFollowers(username:currentPage:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "70137402-1A8D-4394-9283-44B797E39821 - ce1753ead8eb41ba"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GithubFollower_Testing.FollowersListVC.getFollowers(username: Swift.String, currentPage: Swift.Int) -&gt; ()"
+                  moduleName = "GithubFollower-Testing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/duyvukim/Desktop/Takehome%20Project/GithubFollower-Testing/GithubFollower-Testing/Screens/FollowersListVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "148">
+               </Location>
+               <Location
+                  uuid = "70137402-1A8D-4394-9283-44B797E39821 - 3093dd2b36e9f2bf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;GithubFollower_Testing.Follower&gt;, GithubFollower_Testing.GFError&gt;) -&gt; () in GithubFollower_Testing.FollowersListVC.getFollowers(username: Swift.String, currentPage: Swift.Int) -&gt; ()"
+                  moduleName = "GithubFollower-Testing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/duyvukim/Desktop/Takehome%20Project/GithubFollower-Testing/GithubFollower-Testing/Screens/FollowersListVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "167">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F29102C3-141D-4704-9882-94ECFC4C78CA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GithubFollower-Testing/Screens/FollowersListVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "getFollowers(username:currentPage:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9C19639F-8EF5-44A4-9A07-6A1A3C99CAC8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GithubFollower-Testing/Managers/Networking/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "getFollowers(username:page:completed:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9C19639F-8EF5-44A4-9A07-6A1A3C99CAC8 - 47b59b0b847fb26d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;GithubFollower_Testing.Follower&gt;, GithubFollower_Testing.GFError&gt;) -&gt; () in GithubFollower_Testing.NetworkManager.getFollowers(username: Swift.String, page: Swift.Int, completed: (Swift.Result&lt;Swift.Array&lt;GithubFollower_Testing.Follower&gt;, GithubFollower_Testing.GFError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "GithubFollower-Testing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/duyvukim/Desktop/Takehome%20Project/GithubFollower-Testing/GithubFollower-Testing/Managers/Networking/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "168">
+               </Location>
+               <Location
+                  uuid = "9C19639F-8EF5-44A4-9A07-6A1A3C99CAC8 - 47b59b0b847fb26d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;GithubFollower_Testing.Follower&gt;, GithubFollower_Testing.GFError&gt;) -&gt; () in GithubFollower_Testing.NetworkManager.getFollowers(username: Swift.String, page: Swift.Int, completed: (Swift.Result&lt;Swift.Array&lt;GithubFollower_Testing.Follower&gt;, GithubFollower_Testing.GFError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "GithubFollower-Testing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/duyvukim/Desktop/Takehome%20Project/GithubFollower-Testing/GithubFollower-Testing/Managers/Networking/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "186">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F5FB8931-2778-4DBF-B305-CE7642E55713"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GithubFollower-Testing/Managers/Networking/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "requestDynamicUrl(endpoint:modelType:completed:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

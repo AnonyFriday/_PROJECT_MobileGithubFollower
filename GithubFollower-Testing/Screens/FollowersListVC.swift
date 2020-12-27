@@ -81,25 +81,25 @@ class FollowersListVC: UIViewController, GFLoadable {
     //MARK: -- configure Add Favorites
     @objc private func addUserToFavorites() {
         showLoadingView()
-//        NetworkManager.shared.downloadUser(username: username) { [weak self] (result) in
-//            guard let self = self else { return }
-//            self.dismissLoadingView()
-//            
-//            switch result {
-//            case .success(let user):
-//                let favorite = Favorite(login: user.login, avatar_url: user.avatarUrl)
-//                PersistanceManager.updatingWith(favorite: favorite, categoryType: .add) { [weak self] (error) in
-//                    guard let self = self else { return }
-//                    guard let error = error else {
-//                        self.presentGFAlertOnMainThread(alertTitle: "Saved Successfully", body: "You have favorited this guy successfully. Congratulation 🎉", buttonTitle: "Hoorayy")
-//                        return
-//                    }
-//                    self.presentGFAlertOnMainThread(alertTitle: "Already Favorited", body: error.rawValue, buttonTitle: "Ok")
-//                }
-//            case .failure(let error):
-//                self.presentGFAlertOnMainThread(alertTitle: "Something went wrong", body: error.rawValue, buttonTitle: "Ok")
-//            }
-//        }
+        NetworkManager.shared.getUser(username: username) { [weak self] (result) in
+            guard let self = self else { return }
+            self.dismissLoadingView()
+            
+            switch result {
+            case .success(let user):
+                let favorite = Favorite(login: user.login, avatar_url: user.avatarUrl)
+                PersistenceManager.update(favorite: favorite, with: .add) { [weak self] (error) in
+                    guard let self = self else { return }
+                    guard let error = error else {
+                        self.presentGFAlertOnMainThread(alertTitle: "Saved Successfully", body: "You have favorited this guy successfully. Congratulation 🎉", buttonTitle: "Hoorayy")
+                        return
+                    }
+                    self.presentGFAlertOnMainThread(alertTitle: "Already Favorited", body: error.rawValue, buttonTitle: "Ok")
+                }
+            case .failure(let error):
+                self.presentGFAlertOnMainThread(alertTitle: "Something went wrong", body: error.rawValue, buttonTitle: "Ok")
+            }
+        }
     }
     
     //MARK: - getFollowers
@@ -107,19 +107,19 @@ class FollowersListVC: UIViewController, GFLoadable {
         showLoadingView()
         isLoadingFollowers = true
         
-//        NetworkManager.shared.downloadFollowers(username: username, page: currentPage) { [weak self] (result) in
-//            guard let self = self else { return } // because self cannot be nil
-//            self.dismissLoadingView()
-//            
-//            switch result {
-//            case .success(let followers):
-//                self.updateUI(followers)
-//            
-//            case .failure(let errorMessage):
-//                self.presentGFAlertOnMainThread(alertTitle: "Networking Failed", body: errorMessage.rawValue, buttonTitle: "Ok")
-//            }
-//            self.isLoadingFollowers = false
-//        }
+        NetworkManager.shared.getFollowers(username: username, page: currentPage) { [weak self] (result) in
+            guard let self = self else { return } 
+            self.dismissLoadingView()
+
+            switch result {
+            case .success(let followers):
+                self.updateUI(followers)
+
+            case .failure(let errorMessage):
+                self.presentGFAlertOnMainThread(alertTitle: "Networking Failed", body: errorMessage.rawValue, buttonTitle: "Ok")
+            }
+            self.isLoadingFollowers = false
+        }
     }
     
     //MARK: -- updateUI

@@ -12,6 +12,7 @@ class NetworkManager {
             
             switch result {
             case .success(let followers):
+                print(followers)
                 completed(.success(followers))
             case .failure(let error):
                 completed(.failure(error))
@@ -38,7 +39,6 @@ class NetworkManager {
             completed(image)
         }
     }
-    
 }
 
 
@@ -46,11 +46,12 @@ extension NetworkManager {
     fileprivate func requestDynamicUrl<T: Codable>(endpoint: EndpointManager,
                                                 modelType: T.Type,
                                                 completed: @escaping(Result<T,GFError>) -> Void) {
+        
         guard let url = endpoint.urlGithub else {
             completed(.failure(.invalidUsername))
             return
         }
-        
+        print("URL", url)
     
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -84,7 +85,7 @@ extension NetworkManager {
             } catch {
                 completed(.failure(.invalidData))
             }
-        }
+        }.resume()
         
     }
     
@@ -110,6 +111,6 @@ extension NetworkManager {
             }
             
             completed(image)
-        }
+        }.resume()
     }
 }

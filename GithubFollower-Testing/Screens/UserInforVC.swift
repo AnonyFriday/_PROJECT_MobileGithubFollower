@@ -66,38 +66,38 @@ class UserInforVC: UIViewController {
     
     //MARK: -- Favorite User
     @objc func favoriteUser() {
-//        NetworkManager.shared.downloadUser(username: self.username) { [weak self] (result) in
-//            guard let self = self else { return }
-//            
-//            switch result {
-//            case .success(let user):
-//                let favorite = Favorite(login: user.login, avatar_url: user.avatarUrl)
-//                PersistanceManager.updatingWith(favorite: favorite, categoryType: .add) { [weak self] (error) in
-//                    guard let self = self else { return }
-//                    guard let error = error else {
-//                        self.presentGFAlertOnMainThread(alertTitle: "Saved Successfully", body: "You have favorited this guy successfully. Congratulation 🎉", buttonTitle: "Hoorayy")
-//                        return
-//                    }
-//                    self.presentGFAlertOnMainThread(alertTitle: "Already Favorited", body: error.rawValue, buttonTitle: "Ok")
-//                }
-//            case .failure(let error):
-//                self.presentGFAlertOnMainThread(alertTitle: "Something went wrong", body: error.rawValue, buttonTitle: "Ok")
-//            }
-//        }
+        NetworkManager.shared.getUser(username: self.username) { [weak self] (result) in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let user):
+                let favorite = Favorite(login: user.login, avatar_url: user.avatarUrl)
+                PersistenceManager.update(favorite: favorite, with: .add) { [weak self] (error) in
+                    guard let self = self else { return }
+                    guard let error = error else {
+                        self.presentGFAlertOnMainThread(alertTitle: "Saved Successfully", body: "You have favorited this guy successfully. Congratulation 🎉", buttonTitle: "Hoorayy")
+                        return
+                    }
+                    self.presentGFAlertOnMainThread(alertTitle: "Already Favorited", body: error.rawValue, buttonTitle: "Ok")
+                }
+            case .failure(let error):
+                self.presentGFAlertOnMainThread(alertTitle: "Something went wrong", body: error.rawValue, buttonTitle: "Ok")
+            }
+        }
     }
     
     
     //MARK: - Get user infor
     private func getUserInfor() {
-//        NetworkManager.shared.downloadUser(username: username) { [weak self] (result) in
-//            guard let self = self else { return }
-//            switch result {
-//            case .success(let user):
-//                DispatchQueue.main.async { self.configureUIElements(user: user)}
-//            case . failure(let error):
-//                self.presentGFAlertOnMainThread(alertTitle: "Something went wrong", body: error.rawValue, buttonTitle: "Ok")
-//            }
-//        }
+        NetworkManager.shared.getUser(username: username) { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let user):
+                DispatchQueue.main.async { self.configureUIElements(user: user)}
+            case . failure(let error):
+                self.presentGFAlertOnMainThread(alertTitle: "Something went wrong", body: error.rawValue, buttonTitle: "Ok")
+            }
+        }
     }
     
     
