@@ -90,27 +90,35 @@ extension NetworkManager {
     }
     
     fileprivate func requestStaticAvatarUrl(endpoint: EndpointManager, completed: @escaping(UIImage?) -> Void) {
+        
         guard let url = endpoint.urlAvatarImage else {
             completed(nil)
             return
         }
         
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard error == nil,
-                  let response = response as? HTTPURLResponse,
-                  response.statusCode == 200,
-                  let data = data
-            else {
-                completed(nil)
-                return
-            }
-            
-            guard let image = UIImage(data: data) else {
-                completed(nil)
-                return
-            }
-            
+        let keyCacheImage = NSString(string: url.absoluteString)
+        if let image = CacheImageManager.getCacheImage(key: keyCacheImage) {
             completed(image)
-        }.resume()
+        } else {
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                guard error == nil,
+                      let response = response as? HTTPURLResponse,
+                      response.statusCode == 200,
+                      let data = data
+                else {
+                    completed(nil)
+                    return
+                }
+                
+                guard let image = UIImage(data: data) else {
+                    completed(nil)
+                    return
+                }
+                
+                CacheImageManager.setCacheImage(data: image, key: keyCacheImage)
+                
+                completed(image)
+            }.resume()
+        }
     }
 }

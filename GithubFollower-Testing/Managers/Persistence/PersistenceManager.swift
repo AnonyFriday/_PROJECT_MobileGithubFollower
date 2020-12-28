@@ -16,7 +16,6 @@ enum Category {
 }
 
 protocol Storable  {
-    
     static func update(favorite: Favorite, with option: Category, completed: @escaping(GFError?) -> Void)
     static func retrieveFavorites(completed: @escaping (Result<[Favorite], GFError>) -> Void )
 }

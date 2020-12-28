@@ -34,6 +34,7 @@
 		5C7B4FA925975E9C00322BA1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B4FA825975E9C00322BA1 /* NetworkManager.swift */; };
 		5C7B4FAC2597619C00322BA1 /* EndpointManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B4FAB2597619C00322BA1 /* EndpointManager.swift */; };
 		5C7B4FB32598B53C00322BA1 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B4FB22598B53C00322BA1 /* PersistenceManager.swift */; };
+		5C7BA31825995A920098ED8E /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BA31725995A920098ED8E /* CacheManager.swift */; };
 		5C8A72C02547BE8D0076AF43 /* UserInforVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A72BF2547BE8D0076AF43 /* UserInforVC.swift */; };
 		5C8AA798258F5D95005C35B0 /* UITabbarController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8AA797258F5D95005C35B0 /* UITabbarController+Ext.swift */; };
 		5C8C2711256CE0DD006F2E18 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C2710256CE0DD006F2E18 /* UIStackView+Ext.swift */; };
@@ -83,6 +84,7 @@
 		5C7B4FA825975E9C00322BA1 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5C7B4FAB2597619C00322BA1 /* EndpointManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointManager.swift; sourceTree = "<group>"; };
 		5C7B4FB22598B53C00322BA1 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		5C7BA31725995A920098ED8E /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		5C8A72BF2547BE8D0076AF43 /* UserInforVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInforVC.swift; sourceTree = "<group>"; };
 		5C8AA797258F5D95005C35B0 /* UITabbarController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabbarController+Ext.swift"; sourceTree = "<group>"; };
 		5C8C2710256CE0DD006F2E18 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
@@ -232,6 +234,14 @@
 			path = Persistence;
 			sourceTree = "<group>";
 		};
+		5C7BA31A25995A9D0098ED8E /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				5C7BA31725995A920098ED8E /* CacheManager.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 		5C9146BD254B7F64006D3E93 /* User Info */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,6 +368,7 @@
 			children = (
 				5C7B4F9D2596AC9800322BA1 /* Networking */,
 				5C7B4F9F2596AC9F00322BA1 /* Persistence */,
+				5C7BA31A25995A9D0098ED8E /* Cache */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -479,6 +490,7 @@
 				5CA3248825771F5800CCFC80 /* GFTabbarController.swift in Sources */,
 				5C1449E5253859ED005B77C4 /* SearchVC.swift in Sources */,
 				5C7254FE25490D7D00922DF6 /* UIVIew+Ext.swift in Sources */,
+				5C7BA31825995A920098ED8E /* CacheManager.swift in Sources */,
 				5C0CC53925445C8100A90561 /* GFEmptyStateView.swift in Sources */,
 				5CDC2DA5253D5C2200049F6D /* GFError.swift in Sources */,
 				5CBBC987253B6225006F4C3C /* GFCustomAlertVC.swift in Sources */,

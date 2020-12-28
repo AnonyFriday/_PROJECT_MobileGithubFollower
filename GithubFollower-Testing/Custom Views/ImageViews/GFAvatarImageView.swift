@@ -17,18 +17,14 @@ class GFAvatarImageView: UIImageView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     
-    //MARK: Set Avatar Followers
-    /// setImage
-    /// - Parameter avatarUrl: avatarUrl
     func setAvatarImage(avatarUrl: String) {
-//        NetworkManager.shared.fetchingAvatarFollowers(avatarUrl: avatarUrl) { [weak self] (imageData) in
-//            guard let self = self else { return }
-//            
-//            DispatchQueue.main.async {
-//                self.image = imageData
-//            }
-//        }
+        NetworkManager.shared.getAvatarImage(avatarUrl: avatarUrl) { (image) in
+            DispatchQueue.main.async {
+                self.image = image
+            }
+        }
     }
     
     private func configure() {
