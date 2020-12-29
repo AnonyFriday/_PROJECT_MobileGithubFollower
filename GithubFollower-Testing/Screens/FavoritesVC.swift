@@ -51,6 +51,8 @@ class FavoritesVC: UIViewController, GFLoadable {
         tableView.dataSource      = self
         tableView.delegate        = self
     }
+    
+    
     //MARK: Get Favorites
     private func getFavorites() {
         PersistenceManager.retrieveFavorites { [weak self] (result) in
@@ -76,6 +78,7 @@ class FavoritesVC: UIViewController, GFLoadable {
 }
 
 extension FavoritesVC: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let favorite = favorites[indexPath.row]
         
@@ -84,11 +87,11 @@ extension FavoritesVC: UITableViewDelegate {
         navigationController?.pushViewController(destVC, animated: true)
     }
     
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
         
         let favorite = favorites[indexPath.row]
-        
         
         PersistenceManager.update(favorite: favorite, with: .delete) { [weak self] (error) in
             guard let self = self else { return }

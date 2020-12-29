@@ -18,5 +18,15 @@ extension Date {
         dateFormatter.timeZone      = .autoupdatingCurrent
         return dateFormatter.string(from: self)
     }
+    
+    //MARK: - Convert to E, d MMM yyyy HH:mm:ss Z
+    func convertToFullDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat    = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.locale        = Locale.current
+        dateFormatter.calendar      = Calendar.current
+        dateFormatter.timeZone      = .autoupdatingCurrent
+        return dateFormatter.string(from: self)
+    }
 }
 

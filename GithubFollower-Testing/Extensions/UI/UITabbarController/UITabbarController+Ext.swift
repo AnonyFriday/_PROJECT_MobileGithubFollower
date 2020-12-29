@@ -7,7 +7,7 @@
 
 import UIKit
 
-let kAnimationDuration = 0.7
+let kAnimationDuration = 0.3
 
 extension UITabBarController {
     
@@ -19,7 +19,7 @@ extension UITabBarController {
         var tabBarOriginY = tabbar.frame.origin.y
         let viewOriginY   = self.view.frame.height
 
-        UIView.animate(withDuration: animationDuration, delay: 0.0, options: [.beginFromCurrentState,.curveEaseIn]) { [self] in
+        UIView.animate(withDuration: animationDuration, delay: 0.0, options: [.curveLinear,.curveEaseIn]) { [self] in
 
             if tabBarOriginY == viewOriginY && hidden == false {
                 tabBarOriginY -= tabBarHeight

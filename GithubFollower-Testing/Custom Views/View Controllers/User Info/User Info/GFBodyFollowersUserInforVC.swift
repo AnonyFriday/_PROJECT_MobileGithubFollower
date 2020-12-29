@@ -8,6 +8,8 @@
 import UIKit
 
 class GFBodyFollowersUserInforVC: UIViewController, GFBodyUserInforProtocol {
+    
+    
        
     //MARK: Variables
     var bodyUserInforProps: GFBodyUserInforProperties = GFBodyUserInforProperties()
@@ -26,9 +28,10 @@ class GFBodyFollowersUserInforVC: UIViewController, GFBodyUserInforProtocol {
     
     
     //MARK: Initializer
-    required init(user: User) {
-        bodyUserInforProps.user = user
+    required init(user: User, delegateTarget: UIViewController) {
         super.init(nibName: nil, bundle: nil)
+        bodyUserInforProps.user = user
+        delegate                = delegateTarget as? GFBodyFollowersUserInforVCDelegate
     }
     
     

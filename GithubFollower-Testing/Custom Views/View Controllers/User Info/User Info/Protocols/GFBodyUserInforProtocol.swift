@@ -11,7 +11,6 @@ import UIKit
 //MARK: Properties
 class GFBodyUserInforProperties {
     
-    var delegate                  : UserInforVCDelegate!
     var user                      : User!
     var actionButton              : GFButton         = GFButton()
     fileprivate var stackView     : UIStackView      = UIStackView()
@@ -25,7 +24,7 @@ protocol GFBodyUserInforProtocol {
     
     var bodyUserInforProps : GFBodyUserInforProperties { get }
     
-    init(user: User)
+    init(user: User, delegateTarget: UIViewController)
     
     func configureViewController()
     func configureStackView()

@@ -1,13 +1,6 @@
-//
-//  FollowersListVC.swift
-//  GithubFollower-Testing
-//
-//  Created by Vu Kim Duy on 17/10/20.
-//
+
 
 import UIKit
-
-
 
 class FollowersListVC: UIViewController, GFLoadable {
     
@@ -54,7 +47,6 @@ class FollowersListVC: UIViewController, GFLoadable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
-
     }
     
     
@@ -187,9 +179,6 @@ class FollowersListVC: UIViewController, GFLoadable {
             self.diffableDatasource.apply(snapShot, animatingDifferences: true)
         }
     }
-    
-    
-    
 }
 
 //MARK: Extension

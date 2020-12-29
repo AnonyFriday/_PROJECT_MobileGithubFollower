@@ -105,12 +105,10 @@ class UserInforVC: UIViewController {
     func configureUIElements(user: User) {
         self.add(childVC: GFHeaderUserInforVC(user: user), into: self.headerView)
         
-        let profileItemVC                              = GFBodyProfileUserInforVC(user: user)
-        profileItemVC.delegate                         = self
+        let profileItemVC                              = GFBodyProfileUserInforVC(user: user, delegateTarget: self)
         self.add(childVC: profileItemVC, into: self.itemContainerViewOne)
         
-        let followersItemVC                            = GFBodyFollowersUserInforVC(user: user)
-        followersItemVC.delegate                       = self
+        let followersItemVC                            = GFBodyFollowersUserInforVC(user: user, delegateTarget: self)
         self.add(childVC: followersItemVC, into: self.itemContainerViewTwo)
         
         dateLabel.text                                 = user.createdAt.convertToMonthYearString()
@@ -121,7 +119,6 @@ class UserInforVC: UIViewController {
     func add(childVC: UIViewController, into containerView: UIView) {
         self.addChild(childVC)
         containerView.addSubview(childVC.view)
-        
         childVC.view.frame  = containerView.bounds
         childVC.didMove(toParent: self)
     }
@@ -192,6 +189,7 @@ class UserInforVC: UIViewController {
     }
 }
 
+
 //MARK: Extension
 extension UserInforVC: GFBodyProfileUserInforVCDelegate {
     
@@ -200,6 +198,7 @@ extension UserInforVC: GFBodyProfileUserInforVCDelegate {
         self.openSafariWebBrowser(url: urlProfile)
     }
 }
+
 
 extension UserInforVC: GFBodyFollowersUserInforVCDelegate {
     

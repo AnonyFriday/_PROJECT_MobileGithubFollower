@@ -12,7 +12,6 @@ class NetworkManager {
             
             switch result {
             case .success(let followers):
-                print(followers)
                 completed(.success(followers))
             case .failure(let error):
                 completed(.failure(error))
@@ -51,7 +50,6 @@ extension NetworkManager {
             completed(.failure(.invalidUsername))
             return
         }
-        print("URL", url)
     
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in

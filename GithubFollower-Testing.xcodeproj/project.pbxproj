@@ -52,6 +52,7 @@
 		5CBDE487253E50D80049D62E /* GFAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBDE486253E50D80049D62E /* GFAvatarImageView.swift */; };
 		5CD02AF225578D70004628FA /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD02AF125578D70004628FA /* Favorite.swift */; };
 		5CDC2DA5253D5C2200049F6D /* GFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDC2DA4253D5C2200049F6D /* GFError.swift */; };
+		5CEC7857259B13DA00E9F087 /* GFLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC7856259B13DA00E9F087 /* GFLogger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,7 @@
 		5CBDE486253E50D80049D62E /* GFAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAvatarImageView.swift; sourceTree = "<group>"; };
 		5CD02AF125578D70004628FA /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		5CDC2DA4253D5C2200049F6D /* GFError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFError.swift; sourceTree = "<group>"; };
+		5CEC7856259B13DA00E9F087 /* GFLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFLogger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,12 +334,9 @@
 		5CBBC990253B7AF6006F4C3C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5CBBC989253B6DED006F4C3C /* UIViewController+Ext.swift */,
-				5C7254FD25490D7D00922DF6 /* UIVIew+Ext.swift */,
-				5C4FEE65254BE74100483551 /* String+Ext.swift */,
-				5C4FEE68254BE74E00483551 /* Date+Ext.swift */,
-				5C8C2710256CE0DD006F2E18 /* UIStackView+Ext.swift */,
-				5C8AA797258F5D95005C35B0 /* UITabbarController+Ext.swift */,
+				5CEC7865259B148900E9F087 /* UI */,
+				5CEC785D259B143300E9F087 /* String */,
+				5CEC785F259B143800E9F087 /* Date */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -388,8 +387,68 @@
 				5CDC2DA4253D5C2200049F6D /* GFError.swift */,
 				5C990C3F2541CBB700CF4D05 /* UIHelper.swift */,
 				5C725500254910A300922DF6 /* Constants.swift */,
+				5CEC7856259B13DA00E9F087 /* GFLogger.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		5CEC7859259B140200E9F087 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5CBBC989253B6DED006F4C3C /* UIViewController+Ext.swift */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		5CEC785B259B142D00E9F087 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				5C7254FD25490D7D00922DF6 /* UIVIew+Ext.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		5CEC785D259B143300E9F087 /* String */ = {
+			isa = PBXGroup;
+			children = (
+				5C4FEE65254BE74100483551 /* String+Ext.swift */,
+			);
+			path = String;
+			sourceTree = "<group>";
+		};
+		5CEC785F259B143800E9F087 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				5C4FEE68254BE74E00483551 /* Date+Ext.swift */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
+		5CEC7861259B144E00E9F087 /* UIStackView */ = {
+			isa = PBXGroup;
+			children = (
+				5C8C2710256CE0DD006F2E18 /* UIStackView+Ext.swift */,
+			);
+			path = UIStackView;
+			sourceTree = "<group>";
+		};
+		5CEC7863259B145600E9F087 /* UITabbarController */ = {
+			isa = PBXGroup;
+			children = (
+				5C8AA797258F5D95005C35B0 /* UITabbarController+Ext.swift */,
+			);
+			path = UITabbarController;
+			sourceTree = "<group>";
+		};
+		5CEC7865259B148900E9F087 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				5CEC7859259B140200E9F087 /* UIViewController */,
+				5CEC785B259B142D00E9F087 /* UIView */,
+				5CEC7861259B144E00E9F087 /* UIStackView */,
+				5CEC7863259B145600E9F087 /* UITabbarController */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -491,6 +550,7 @@
 				5C1449E5253859ED005B77C4 /* SearchVC.swift in Sources */,
 				5C7254FE25490D7D00922DF6 /* UIVIew+Ext.swift in Sources */,
 				5C7BA31825995A920098ED8E /* CacheManager.swift in Sources */,
+				5CEC7857259B13DA00E9F087 /* GFLogger.swift in Sources */,
 				5C0CC53925445C8100A90561 /* GFEmptyStateView.swift in Sources */,
 				5CDC2DA5253D5C2200049F6D /* GFError.swift in Sources */,
 				5CBBC987253B6225006F4C3C /* GFCustomAlertVC.swift in Sources */,
